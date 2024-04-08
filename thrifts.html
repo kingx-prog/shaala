@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrift Savings - Shaala Doo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Linking the FullCalendar CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css" rel="stylesheet">
+    <style>
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f7f7f7;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #0079c1;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #005f91;
+        }
+
+        .user-info {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .user-info h2 {
+            color: #0079c1;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Thrift Savings</h1>
+            <p>Start building your financial future</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Login Form -->
+            <form class="form-group" id="login-form">
+                <h2>Login to Your Account</h2>
+                <input type="text" name="username" placeholder="Username or Email">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" value="Login">
+            </form>
+
+            <!-- User Info -->
+            <div class="user-info" id="user-info" style="display: none;">
+                <h2>User Information</h2>
+                <p><strong>Member Number:</strong> <span id="member-number">123456</span></p>
+                <p><strong>Member Name:</strong> <span id="member-name">Chen Clement</span></p>
+                <p><strong>Savings Balance:</strong> $<span id="savings-balance">1000000</span></p>
+            </div>
+
+            <!-- Deposit Form -->
+            <form class="form-group" id="deposit-form" style="display: none;">
+                <h2>Deposit to Cooperative Account</h2>
+                <input type="number" name="deposit-amount" placeholder="Amount">
+                <input type="submit" value="Deposit">
+            </form>
+
+            <!-- Calendar for Deposit History -->
+            <div id="deposit-calendar"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Shaala Doo Thrift and Loan Co-operative Society Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Linking the FullCalendar library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
+    <script>
+        // Ensure FullCalendar is loaded before initializing
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('login-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                // Perform login logic here
+                // Example: Display user info and deposit form after successful login
+                document.getElementById('user-info').style.display = 'block';
+                document.getElementById('deposit-form').style.display = 'block';
+                // Initialize FullCalendar for deposit history
+                initializeCalendar();
+            });
+
+            function initializeCalendar() {
+                var calendarEl = document.getElementById('deposit-calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    // Configure calendar options
+                    initialView: 'dayGridMonth',
+                    events: [
+                        // Example event data (replace with actual deposit history)
+                        { title: 'Deposit $100', start: '2024-04-01' },
+                        { title: 'Deposit $200', start: '2024-04-05' },
+                        { title: 'Deposit $150', start: '2024-04-10' }
+                    ]
+                });
+                calendar.render();
+            }
+        });
+    </script>
+</body>
+</html>
